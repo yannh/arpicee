@@ -24,12 +24,11 @@ func (m *Mock) Run(args []arpicee.Argument) error {
 		switch arg := arg.(type) {
 		case arpicee.ArgumentString:
 			output = fmt.Sprintf("%s --%s %s", output, arg.Name, arg.Val)
-		case arpicee.ArgumentBool:
-			if arg.Val {
-				output = fmt.Sprintf("%s --%s true", output, arg.Name)
-			} else {
-				output = fmt.Sprintf("%s --%s false", output, arg.Name)
-			}
+			// if arg.Val {
+			//	output = fmt.Sprintf("%s --%s true", output, arg.Name)
+			// } else {
+			//	output = fmt.Sprintf("%s --%s false", output, arg.Name)
+			// }
 		}
 	}
 
