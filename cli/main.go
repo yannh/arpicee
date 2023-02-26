@@ -9,6 +9,11 @@ func main() {
 	procs := []arpicee.RemoteCall{}
 	procs = append(procs, mock.New("toto"))
 	for _, p := range procs {
-		p.Run()
+		p.Run([]arpicee.Argument{
+			arpicee.ArgumentString{
+				Name: "foo",
+				Val:  "bar",
+			},
+		})
 	}
 }
