@@ -1,0 +1,23 @@
+description: 'Example for SSM automation to use with Arpicee'
+schemaVersion: '0.3'
+outputs:
+  - invoke.Output
+parameters:
+  param1:
+    type: String
+    description: 'First dummy parameter'
+  param2:
+    type: String
+    description: 'Second dummy parameter'
+mainSteps:
+  - name: invoke
+    action: 'aws:invokeLambdaFunction'
+    inputs:
+      InvocationType: RequestResponse
+      Payload: '{"param1": "{{ param1 }}", "param2": "{{ param2 }}"}'
+      FunctionName: hello-world
+    description: Hello world!
+    outputs:
+      - Selector: $
+        Name: Output
+        Type: StringMap
