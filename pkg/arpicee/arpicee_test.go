@@ -1,6 +1,7 @@
 package arpicee
 
 import (
+	"flag"
 	"fmt"
 	"reflect"
 	"testing"
@@ -84,6 +85,22 @@ func TestArgsFromFlags(t *testing.T) {
 			nil,
 		},
 		{
+			[]Parameter{},
+			[]string{"cli", "-h"},
+			[]Argument{
+				&ArgumentString{
+					Name: "param1",
+					Val:  "foo",
+				},
+			},
+			`Usage: cli [OPTION]... [FILE OR FOLDER]...
+  -h	display help
+  -output string
+    	output type: json or text (default "text")
+`,
+			flag.ErrHelp,
+		},
+		{
 			[]Parameter{
 				{
 					"param1",
@@ -95,8 +112,6 @@ func TestArgsFromFlags(t *testing.T) {
 			[]string{"cli"},
 			[]Argument{},
 			`Usage: cli [OPTION]... [FILE OR FOLDER]...
-  -debug
-    	set debug mode
   -h	display help
   -output string
     	output type: json or text (default "text")
@@ -111,8 +126,6 @@ func TestArgsFromFlags(t *testing.T) {
 			[]Argument{},
 			`flag provided but not defined: -param1
 Usage: cli [OPTION]... [FILE OR FOLDER]...
-  -debug
-    	set debug mode
   -h	display help
   -output string
     	output type: json or text (default "text")

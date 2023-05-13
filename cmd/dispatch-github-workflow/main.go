@@ -26,7 +26,6 @@ type Workflow struct {
 }
 
 func realMain() error {
-
 	githubToken := os.Getenv("GITHUB_TOKEN")
 
 	ctx := context.Background()
@@ -37,11 +36,20 @@ func realMain() error {
 	tc := oauth2.NewClient(ctx, ts)
 	c := github.NewClient(tc)
 
-	r, err := githubrpc.New(ctx, c, "yannh", "arpicee-dispatch-workflow", "hello")
+	owner := os.Getenv("ARPICEE_GH_OWNER")
+	repo := os.Getenv("ARPICEE_GH_REPO")
+	workflowName := os.Getenv("ARPICEE_GH_WORKFLOW_NAME")
+
+	r, err := githubrpc.New(ctx, c, owner, repo, workflowName)
 	if err != nil {
 		fmt.Errorf("failed initialising Github Workflow: %s", err.Error())
 	}
-	cliArgs, _, _ := arpicee.ArgsFromFlags(r.Params(), os.Args)
+
+	cliArgs, o, err := arpicee.ArgsFromFlags(r.Params(), os.Args)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "%s", o)
+		return nil
+	}
 	workflowOutput, err := r.Run(cliArgs)
 	if err != nil {
 		fmt.Errorf("failed running Github Workflow: %s", err.Error())

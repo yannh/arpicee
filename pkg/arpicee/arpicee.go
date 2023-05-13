@@ -123,7 +123,7 @@ func ArgsFromFlags(params []Parameter, flags []string) ([]Argument, string, erro
 	// Parameters common to all Lambdas
 	cliArgs["outputFormat"] = fset.String("output", "text", "output type: json or text")
 	cliArgs["help"] = fset.Bool("h", false, "display help")
-	fset.Bool("debug", false, "set debug mode")
+	// cliArgs["debug"] = fset.Bool("debug", false, "set debug mode")
 	fset.Usage = func() {
 		fmt.Fprintf(&buf, "Usage: %s [OPTION]... [FILE OR FOLDER]...\n", flags[0])
 		fset.PrintDefaults()
