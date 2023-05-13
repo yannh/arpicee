@@ -1,4 +1,4 @@
-# Arpicee - Previous-gen automation
+# Arpicee - The Remote Procedure Framework
 
 Arpicee is a remote procedure framework that enables you to
 trigger a variety of "jobs" (Github Actions, AWS Lambdas,
