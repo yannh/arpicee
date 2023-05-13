@@ -29,4 +29,6 @@ $ ./bin/dispatch-github-workflow -name Yann -benice true
 
 or via a Slackbot:
 
-![Select RPC](https://github.com/yannh/arpicee/blob/main/assets/select_arpicee.png?raw=true)
+![Select Arpicee](https://github.com/yannh/arpicee/blob/main/assets/select_arpicee.png?raw=true)
+![Configure Arpicee](https://github.com/yannh/arpicee/blob/main/assets/configure_arpicee.png?raw=true)
+![Arpicee result](https://github.com/yannh/arpicee/blob/main/assets/arpicee_result.png?raw=true)
