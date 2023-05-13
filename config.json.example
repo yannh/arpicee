@@ -1,0 +1,24 @@
+{
+  "lambda": [
+    {
+      "region": "us-east-1",
+      "tagFilter": {
+        "arpicee": "1"
+      }
+    }
+  ],
+  "ssm": [
+    {
+      "region": "us-east-1",
+      "tagFilter": {
+        "arpicee": "1"
+      }
+    }
+  ],
+  "github": [
+    {
+      "repo": "yannh/arpicee-dispatch-workflow",
+      "workflow": "main"
+    }
+  ]
+}
