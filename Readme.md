@@ -7,7 +7,7 @@ a slackbot, ...)
 
 ## Screenshots
 
-The [following Github Workflow] can be used as an Arpicee, and then triggered either through a CLI:
+The [following Github Workflow](https://github.com/yannh/arpicee-dispatch-workflow/blob/496ccba14b4db22e9fb525651d855dc790e8e1f5/.github/workflows/main.yml) can be used as an Arpicee, and then triggered either through a CLI:
 
 ```
 export ARPICEE_GH_OWNER=yannh
@@ -29,6 +29,4 @@ $ ./bin/dispatch-github-workflow -name Yann -benice true
 
 or via a Slackbot:
 
-![Select Arpicee](https://github.com/yannh/arpicee/blob/main/assets/select_arpicee.png?raw=true)
-![Configure Arpicee](https://github.com/yannh/arpicee/blob/main/assets/configure_arpicee.png?raw=true)
-![Arpicee result](https://github.com/yannh/arpicee/blob/main/assets/arpicee_result.png?raw=true)
+![Slackbot demo](https://github.com/yannh/arpicee/blob/main/assets/slackbot.gif?raw=true)
