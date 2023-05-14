@@ -1,4 +1,4 @@
-project_name: arpicee
+project_name: arpicee-slackbot
 builds:
   - main: ./cmd/slackbot
     binary: arpicee-slackbot
@@ -33,9 +33,9 @@ archives:
 
 dockers:
   - image_templates:
-      - 'ghcr.io/{{.Env.GIT_OWNER}}/arpicee:latest'
-      - 'ghcr.io/{{.Env.GIT_OWNER}}/arpicee:{{ .Tag }}'
-      - 'ghcr.io/{{.Env.GIT_OWNER}}/arpicee:{{ .Tag }}-amd64'
+      - 'ghcr.io/{{.Env.GIT_OWNER}}/{{ .ProjectName  }}:latest'
+      - 'ghcr.io/{{.Env.GIT_OWNER}}/{{ .ProjectName  }}:{{ .Tag }}'
+      - 'ghcr.io/{{.Env.GIT_OWNER}}/{{ .ProjectName  }}:{{ .Tag }}-amd64'
     dockerfile: Dockerfile
     build_flag_templates:
       - "--platform=linux/amd64"
