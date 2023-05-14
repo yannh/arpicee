@@ -1,0 +1,55 @@
+project_name: arpicee
+builds:
+  - main: ./cmd/slackbot
+    binary: arpicee-slackbot
+    env:
+      - CGO_ENABLED=0
+      - GOFLAGS = -mod=vendor
+      - GO111MODULE = on
+      - GIT_OWNER = yannh
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - 386
+      - amd64
+      - arm
+      - arm64
+    flags:
+      - -trimpath
+      - -tags=netgo
+      - -a
+    ldflags:
+      - -extldflags "-static"
+      - -X main.version={{.Tag}}
+
+archives:
+  - format: tar.gz
+    format_overrides:
+      - goos: windows
+        format: zip
+    name_template: "{{ .ProjectName  }}-{{ .Os  }}-{{ .Arch  }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
+
+dockers:
+  - image_templates:
+      - 'ghcr.io/{{.Env.GIT_OWNER}}/arpicee:latest'
+      - 'ghcr.io/{{.Env.GIT_OWNER}}/arpicee:{{ .Tag }}'
+      - 'ghcr.io/{{.Env.GIT_OWNER}}/arpicee:{{ .Tag }}-amd64'
+    dockerfile: Dockerfile
+    build_flag_templates:
+      - "--platform=linux/amd64"
+    goos: linux
+    goarch: amd64
+
+checksum:
+  name_template: 'CHECKSUMS'
+
+snapshot:
+  name_template: "{{ .Tag }}-next"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^test:'
