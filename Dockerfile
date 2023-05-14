@@ -11,5 +11,5 @@ LABEL org.opencontainers.image.authors="yann@mandragor.org" \
       org.opencontainers.image.url="https://github.com/yannh/arpicee/"
 MAINTAINER Yann HAMON <yann@mandragor.org>
 COPY --from=certs /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
-COPY arpicee /
+COPY arpicee-slacbot /
 ENTRYPOINT ["/arpicee-slackbot"]
