@@ -115,7 +115,7 @@ func New(ctx context.Context, c *github.Client, owner string, repo string, workf
 		repo:        repo,
 		name:        workflowName,
 		id:          *w.ID,
-		description: "",
+		description: fmt.Sprintf("Workflow %s in repo https://github.com/%s/%s", workflowName, owner, repo),
 		params:      params,
 	}, nil
 }

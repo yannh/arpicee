@@ -92,7 +92,7 @@ func RunRPCDialog(channelID string, rpc arpicee.RemoteCall) slack.ModalViewReque
 		}
 	}
 
-	title := fmt.Sprintf("%s - %s", rpc.Name(), strings.Title(strings.ToLower("")))
+	title := fmt.Sprintf("%s", rpc.Name())
 	title_short := title
 	if len(title) > 24 {
 		title_short = title[:22] + ".." // [ERROR] must be less than 25 characters [json-pointer:/view/title/text]
